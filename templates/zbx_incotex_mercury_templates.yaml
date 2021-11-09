@@ -1,0 +1,533 @@
+zabbix_export:
+  version: '5.4'
+  date: '2021-11-09T12:31:59Z'
+  groups:
+    -
+      uuid: e751c77f54c748f39f9e62931a435732
+      name: 'Power meters'
+  templates:
+    -
+      uuid: 0c40ec1bd06e4ed897c6d91e1afccd5e
+      template: 'Incotex Mercury 236'
+      name: 'Incotex Mercury 236'
+      groups:
+        -
+          name: 'Power meters'
+      items:
+        -
+          uuid: c20a3a05708e4fe4a0864615f26e12b8
+          name: A1
+          type: DEPENDENT
+          key: A1
+          delay: '0'
+          value_type: FLOAT
+          units: °
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.A.p1
+          master_item:
+            key: data
+        -
+          uuid: f3a7881b3dc44f58a9055a69b7dca775
+          name: A2
+          type: DEPENDENT
+          key: A2
+          delay: '0'
+          value_type: FLOAT
+          units: °
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.A.p2
+          master_item:
+            key: data
+        -
+          uuid: 36d85571e8e94fd6a86e533e17687b3e
+          name: A3
+          type: DEPENDENT
+          key: A3
+          delay: '0'
+          value_type: FLOAT
+          units: °
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.A.p3
+          master_item:
+            key: data
+        -
+          uuid: 542e512a3f2748a0ba5c64731c1b144e
+          name: CosF
+          type: DEPENDENT
+          key: CosF
+          delay: '0'
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.CosF.sum
+          master_item:
+            key: data
+        -
+          uuid: 0a905605599443598d04f4732298c7bf
+          name: CosF1
+          type: DEPENDENT
+          key: CosF1
+          delay: '0'
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.CosF.p1
+          master_item:
+            key: data
+        -
+          uuid: b0f67f56e36f4b1ba9e1534ad686cdcf
+          name: CosF2
+          type: DEPENDENT
+          key: CosF2
+          delay: '0'
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.CosF.p2
+          master_item:
+            key: data
+        -
+          uuid: 07d421e38a7b42fe98870eaabf265bf5
+          name: CosF3
+          type: DEPENDENT
+          key: CosF3
+          delay: '0'
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.CosF.p3
+          master_item:
+            key: data
+        -
+          uuid: 032eec072c4141bd90d5453a9f782f3c
+          name: data
+          type: TRAP
+          key: data
+          delay: '0'
+          trends: '0'
+          value_type: TEXT
+        -
+          uuid: 7601dc42158f47018edfff85cc8b97b7
+          name: F
+          type: DEPENDENT
+          key: F
+          delay: '0'
+          value_type: FLOAT
+          units: Hertz
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.F
+          master_item:
+            key: data
+        -
+          uuid: b8092d95797444a29e0af17b7bce17bc
+          name: I1
+          type: DEPENDENT
+          key: I1
+          delay: '0'
+          value_type: FLOAT
+          units: Amps
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.I.p1
+          master_item:
+            key: data
+        -
+          uuid: 889db093e2424523bc737ad36a16cdb4
+          name: I2
+          type: DEPENDENT
+          key: I2
+          delay: '0'
+          value_type: FLOAT
+          units: Amps
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.I.p2
+          master_item:
+            key: data
+        -
+          uuid: bbbc3c969a594e9b927233e87e6e192a
+          name: I3
+          type: DEPENDENT
+          key: I3
+          delay: '0'
+          value_type: FLOAT
+          units: Amps
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.I.p3
+          master_item:
+            key: data
+        -
+          uuid: 002ecedb6ed64083b8364cd91cd2c1f6
+          name: mainsStatus
+          type: DEPENDENT
+          key: mainsStatus
+          delay: '0'
+          trends: '0'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.mainsStatus
+          master_item:
+            key: data
+          triggers:
+            -
+              uuid: b34eceb805964f0787cdead28c2d699a
+              expression: 'last(/Incotex Mercury 236/mainsStatus)=0'
+              name: 'Electricity meter disabled'
+              priority: HIGH
+        -
+          uuid: 393264964d374d918570b5f673418aaf
+          name: P
+          type: DEPENDENT
+          key: P
+          delay: '0'
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.P.sum
+          master_item:
+            key: data
+        -
+          uuid: b1e13077f1834ea5a1e170cf9b4452a9
+          name: P1
+          type: DEPENDENT
+          key: P1
+          delay: '0'
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.P.p1
+          master_item:
+            key: data
+        -
+          uuid: adc145540a644209a95a11880e5b63ba
+          name: P2
+          type: DEPENDENT
+          key: P2
+          delay: '0'
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.P.p2
+          master_item:
+            key: data
+        -
+          uuid: c4c69775f8cf4f5498bcb459c970edbe
+          name: P3
+          type: DEPENDENT
+          key: P3
+          delay: '0'
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.P.p3
+          master_item:
+            key: data
+        -
+          uuid: 8bb9524febb1407aaf6733c6f84ffeea
+          name: PR
+          type: DEPENDENT
+          key: PR
+          delay: '0'
+          value_type: FLOAT
+          units: kWh
+          description: |
+            Total consumed, all tariffs (KWh);
+            Накопленная активная прямая энергия A+ от сброса (kWh)
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.PR.ap
+          master_item:
+            key: data
+        -
+          uuid: 07d075c1a0254da7a4b936a471cdee50
+          name: PT
+          type: DEPENDENT
+          key: PT
+          delay: '0'
+          value_type: FLOAT
+          units: kWh
+          description: |
+            Total consumed for the current day, all tariffs (KWh);
+            Накопленная активная прямая энергия A+ за текущие сутки (kWh)
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.PT.ap
+          master_item:
+            key: data
+        -
+          uuid: 8ea33e7d368c4540b662efdf8f2479a6
+          name: PY
+          type: DEPENDENT
+          key: PY
+          delay: '0'
+          value_type: FLOAT
+          units: kWh
+          description: |
+            Total consumed for the previous day, all tariffs (KWh);
+            Накопленная активная прямая энергия A+ за предыдущие сутки (kWh)
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.PY.ap
+          master_item:
+            key: data
+        -
+          uuid: 05c700caeea4488dbf2678e421e73d45
+          name: S
+          type: DEPENDENT
+          key: S
+          delay: '0'
+          value_type: FLOAT
+          units: VA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.S.sum
+          master_item:
+            key: data
+        -
+          uuid: 1f8b6767d7af48c8be3f846c154b52f2
+          name: S1
+          type: DEPENDENT
+          key: S1
+          delay: '0'
+          value_type: FLOAT
+          units: VA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.S.p1
+          master_item:
+            key: data
+        -
+          uuid: 2ec7102947a3496e99f4ebbaac7f15ee
+          name: S2
+          type: DEPENDENT
+          key: S2
+          delay: '0'
+          value_type: FLOAT
+          units: VA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.S.p2
+          master_item:
+            key: data
+        -
+          uuid: 2ce5b4646b494cba8c8442f0b641a265
+          name: S3
+          type: DEPENDENT
+          key: S3
+          delay: '0'
+          value_type: FLOAT
+          units: VA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.S.p3
+          master_item:
+            key: data
+        -
+          uuid: 4cb18eb24ce4405bb8300fe88a9254fb
+          name: U1
+          type: DEPENDENT
+          key: U1
+          delay: '0'
+          value_type: FLOAT
+          units: Volts
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.U.p1
+          master_item:
+            key: data
+          triggers:
+            -
+              uuid: 1edb59f8610c4d26a86917b4766a2528
+              expression: 'last(/Incotex Mercury 236/U1)<207'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Incotex Mercury 236/U1,#1:now-1m)>=207'
+              name: 'Low voltage. Phase L1.'
+              priority: HIGH
+              dependencies:
+                -
+                  name: 'Electricity meter disabled'
+                  expression: 'last(/Incotex Mercury 236/mainsStatus)=0'
+        -
+          uuid: 996c83369c4a412984522a847593e31b
+          name: U2
+          type: DEPENDENT
+          key: U2
+          delay: '0'
+          value_type: FLOAT
+          units: Volts
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.U.p2
+          master_item:
+            key: data
+          triggers:
+            -
+              uuid: 09243a14cb9d4fb79ff75cd7c6da2527
+              expression: 'last(/Incotex Mercury 236/U2)<=207'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Incotex Mercury 236/U2,#1:now-1m)>=207'
+              name: 'Low voltage. Phase L2.'
+              priority: HIGH
+              dependencies:
+                -
+                  name: 'Electricity meter disabled'
+                  expression: 'last(/Incotex Mercury 236/mainsStatus)=0'
+        -
+          uuid: b783d41e420e49428d529e7d2d571e0c
+          name: U3
+          type: DEPENDENT
+          key: U3
+          delay: '0'
+          value_type: FLOAT
+          units: Volts
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.U.p3
+          master_item:
+            key: data
+          triggers:
+            -
+              uuid: e5bce10460894aeba3ce94031f22c0ea
+              expression: 'last(/Incotex Mercury 236/U3)<=207'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Incotex Mercury 236/U3,#1:now-1m)>=207'
+              name: 'Low voltage. Phase L3.'
+              priority: HIGH
+              dependencies:
+                -
+                  name: 'Electricity meter disabled'
+                  expression: 'last(/Incotex Mercury 236/mainsStatus)=0'
+  graphs:
+    -
+      uuid: 0a56519bd75244e680b47c4b9f725f95
+      name: 'Active Power, kW'
+      graph_items:
+        -
+          sortorder: '1'
+          color: 2774A4
+          item:
+            host: 'Incotex Mercury 236'
+            key: P
+        -
+          sortorder: '2'
+          color: FFFF00
+          item:
+            host: 'Incotex Mercury 236'
+            key: P1
+        -
+          sortorder: '3'
+          color: 1A7C11
+          item:
+            host: 'Incotex Mercury 236'
+            key: P2
+        -
+          sortorder: '4'
+          color: F63100
+          item:
+            host: 'Incotex Mercury 236'
+            key: P3
+    -
+      uuid: beb87c03cbcc47e6b60c92052a12ec7e
+      name: 'Current, A'
+      graph_items:
+        -
+          sortorder: '1'
+          color: FFFF00
+          item:
+            host: 'Incotex Mercury 236'
+            key: I1
+        -
+          sortorder: '2'
+          color: 80FF00
+          item:
+            host: 'Incotex Mercury 236'
+            key: I2
+        -
+          sortorder: '3'
+          color: FF0000
+          item:
+            host: 'Incotex Mercury 236'
+            key: I3
+    -
+      uuid: 5e60ca518f7c4e149d866a76ae50f66f
+      name: 'Voltage, V'
+      graph_items:
+        -
+          sortorder: '1'
+          color: FFFF00
+          item:
+            host: 'Incotex Mercury 236'
+            key: U1
+        -
+          sortorder: '2'
+          color: 1A7C11
+          item:
+            host: 'Incotex Mercury 236'
+            key: U2
+        -
+          sortorder: '3'
+          color: F63100
+          item:
+            host: 'Incotex Mercury 236'
+            key: U3
